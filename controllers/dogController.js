@@ -18,12 +18,7 @@ const dogController = {
   create: function(req, res) {
     Dog.create(req.body).then(savedDog => res.send(savedDog));
   },
-// edit
-//   edit: function(req, res) {
-//     Shelter.findById(req.params.id).then(shelter => {
-//       res.send(shelter);
-//     });
-//   },
+  
   // update
   update: function(req, res) {
     Dog.findByIdAndUpdate(req.params.dogId, req.body, { new: true }).then(savedDog => {

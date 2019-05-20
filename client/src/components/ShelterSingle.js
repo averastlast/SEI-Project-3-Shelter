@@ -11,11 +11,11 @@ class ShelterSingle extends Component {
                 address: '',
                 phoneNum: 0
             },
-            dogs: [],
-            newDog: {
-                name: '',
-                breed: ''
-            }
+            dogs: []
+        },
+        newDog: {
+            name: '',
+            breed: ''
         },
         redirectToHome: false,
         isEditFormDisplayed: false
@@ -30,6 +30,7 @@ class ShelterSingle extends Component {
 
     componentDidMount = () => {
         this.getShelter()
+        this.getDog()
     }
 
     deleteShelter = () => {
@@ -47,14 +48,11 @@ class ShelterSingle extends Component {
     // CHANGE BEGIN
 
     getDog = () => {
-        axios.get(`/api/proj/shelters/${this.props.match.params.id}`).then(res => {
+        const shelterId = this.props.match.params.shelterId
+        axios.get(`/api/proj/shelters/${shelterId}/dogs`).then(res => {
             console.log(res.data)
-            this.setState({ shelterInfo: res.data })
+            this.setState({ newDog: res.data })
         })
-    }
-
-    componentDidMountwDog = () => {
-        this.getDog()
     }
 
     toggleAddDogForm = () => {
@@ -64,34 +62,33 @@ class ShelterSingle extends Component {
     }
 
     handleAdd = (x) => {
-        const cloneDog = { ...this.state.shelterInfo }
+        const cloneDog = { ...this.state.newDog }
 
-        let inside = cloneDog.newDog
+        cloneDog[x.target.name] = x.target.value
 
-        inside[x.target.name] = x.target.value
-
-        cloneDog.newDog = inside
-
-        this.setState({ shelterInfo: cloneDog })
+        this.setState({ newDog: cloneDog })
     }
 
     createDog = (e) => {
         e.preventDefault()
         axios
-            .post(`/api/proj/shelters/${this.props.match.params.id}`, {
-                name: this.state.shelterInfo.newDog.name,
-                breed: this.state.shelterInfo.newDog.breed,
+            .post(`/api/proj/dogs`, {
+                name: this.state.newDog.name,
+                breed: this.state.newDog.breed,
+                shelterId: this.state.shelterInfo.shelter._id
             })
             .then(res => {
                 const dogsList = [...this.state.shelterInfo.dogs]
                 dogsList.unshift(res.data)
+                const clonedShelterInfo = {...this.state.shelterInfo}
+                clonedShelterInfo.dogs = dogsList
                 this.setState({
                     newDog: {
                         name: '',
                         breed: ''
                     },
                     isAddDogFormDisplayed: false,
-                    dogs: dogsList
+                    shelterInfo: clonedShelterInfo
                 })
             })
     }
@@ -206,8 +203,8 @@ class ShelterSingle extends Component {
                                     id="name"
                                     type="text"
                                     name="name"
-                                    onChange={this.handleChange}
-                                    value={this.state.shelterInfo.newDog.name}
+                                    onChange={this.handleAdd}
+                                    value={this.state.newDog.name}
                                 />
                             </div>
                             <div>
@@ -216,8 +213,8 @@ class ShelterSingle extends Component {
                                     id="breed"
                                     type="text"
                                     name="breed"
-                                    onChange={this.handleChange}
-                                    value={this.state.shelterInfo.newDog.breed}
+                                    onChange={this.handleAdd}
+                                    value={this.state.newDog.breed}
                                 />
                             </div>
                             <button>Create</button>

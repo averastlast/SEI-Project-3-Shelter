@@ -62,7 +62,7 @@ class ShelterList extends Component {
 
         return (
             <div>
-                <p>Shelters:</p>
+                <title>Shelters:</title>
                 {
                     this.state.allShelters.map((shelter, i) => {
                         return (
