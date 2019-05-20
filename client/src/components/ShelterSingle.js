@@ -43,14 +43,11 @@ class ShelterSingle extends Component {
     handleChange = (e) => {
         const cloneShelter = { ...this.state.shelterInfo }
 
-        
-
         let inside = cloneShelter.shelter
             
         inside[e.target.name] = e.target.value
 
         cloneShelter.shelter = inside
-
 
         console.log(cloneShelter.shelter)
         this.setState({ shelterInfo: cloneShelter })
