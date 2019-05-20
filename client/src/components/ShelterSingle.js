@@ -11,13 +11,17 @@ class ShelterSingle extends Component {
                 address: '',
                 phoneNum: 0
             },
-            dogs: []
+            dogs: [],
+            newDog: {
+                name: '',
+                breed: ''
+            }
         },
         redirectToHome: false,
         isEditFormDisplayed: false
     }
 
-    getShelter=()=>{
+    getShelter = () => {
         axios.get(`/api/proj/shelters/${this.props.match.params.id}`).then(res => {
             console.log(res.data)
             this.setState({ shelterInfo: res.data })
@@ -30,26 +34,78 @@ class ShelterSingle extends Component {
 
     deleteShelter = () => {
         axios.delete(`/api/proj/shelters/${this.props.match.params.id}`).then(res => {
-            this.setState({redirectToHome: true})
+            this.setState({ redirectToHome: true })
         })
     }
 
     toggleEditForm = () => {
         this.setState((state, props) => {
-            return {isEditFormDisplayed: !state.isEditFormDisplayed}
+            return { isEditFormDisplayed: !state.isEditFormDisplayed }
         })
     }
+
+    // CHANGE BEGIN
+
+    getDog = () => {
+        axios.get(`/api/proj/shelters/${this.props.match.params.id}`).then(res => {
+            console.log(res.data)
+            this.setState({ shelterInfo: res.data })
+        })
+    }
+
+    componentDidMountwDog = () => {
+        this.getDog()
+    }
+
+    toggleAddDogForm = () => {
+        this.setState((state, props) => {
+            return ({ isAddDogFormDisplayed: !state.isAddDogFormDisplayed })
+        })
+    }
+
+    handleAdd = (x) => {
+        const cloneDog = { ...this.state.shelterInfo }
+
+        let inside = cloneDog.newDog
+
+        inside[x.target.name] = x.target.value
+
+        cloneDog.newDog = inside
+
+        this.setState({ shelterInfo: cloneDog })
+    }
+
+    createDog = (e) => {
+        e.preventDefault()
+        axios
+            .post(`/api/proj/shelters/${this.props.match.params.id}`, {
+                name: this.state.shelterInfo.newDog.name,
+                breed: this.state.shelterInfo.newDog.breed,
+            })
+            .then(res => {
+                const dogsList = [...this.state.shelterInfo.dogs]
+                dogsList.unshift(res.data)
+                this.setState({
+                    newDog: {
+                        name: '',
+                        breed: ''
+                    },
+                    isAddDogFormDisplayed: false,
+                    dogs: dogsList
+                })
+            })
+    }
+    // CHANGE END
 
     handleChange = (e) => {
         const cloneShelter = { ...this.state.shelterInfo }
 
         let inside = cloneShelter.shelter
-            
+
         inside[e.target.name] = e.target.value
 
         cloneShelter.shelter = inside
 
-        console.log(cloneShelter.shelter)
         this.setState({ shelterInfo: cloneShelter })
     }
 
@@ -65,9 +121,6 @@ class ShelterSingle extends Component {
                 this.setState({ isEditFormDisplayed: false })
                 this.getShelter()
             })
-            
-            
-            
     }
 
     render() {
@@ -141,6 +194,37 @@ class ShelterSingle extends Component {
                             <button onClick={this.deleteShelter}>Delete</button>
                         </div>
                 }
+
+                {/* CHANGE BEGIN */}
+                <button onClick={this.toggleAddDogForm}>+ New Dog</button>
+                {
+                    this.state.isAddDogFormDisplayed
+                        ? <form onSubmit={this.createDog}>
+                            <div>
+                                <label htmlFor="name">Name</label>
+                                <input
+                                    id="name"
+                                    type="text"
+                                    name="name"
+                                    onChange={this.handleChange}
+                                    value={this.state.shelterInfo.newDog.name}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="breed">Breed</label>
+                                <input
+                                    id="breed"
+                                    type="text"
+                                    name="breed"
+                                    onChange={this.handleChange}
+                                    value={this.state.shelterInfo.newDog.breed}
+                                />
+                            </div>
+                            <button>Create</button>
+                        </form>
+                        : null
+                }
+                {/* CHANGE END */}
             </div>
         )
 

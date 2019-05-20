@@ -1,5 +1,5 @@
 import React from 'react';
-// import './App.css';
+import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import ShelterList from './components/ShelterList.js'
 import ShelterSingle from './components/ShelterSingle.js'

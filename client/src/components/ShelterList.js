@@ -56,68 +56,67 @@ class ShelterList extends Component {
                     allShelters: sheltersList
                 })
             })
-
     }
 
     render() {
-        
+
         return (
             <div>
                 <p>Shelters:</p>
                 {
                     this.state.allShelters.map((shelter, i) => {
                         return (
-                            
+
                             <div key={i}>
                                 <h1><Link to={'/shelter/' + shelter._id}>{shelter.name}</Link></h1>
                                 {shelter.address}
                                 {shelter.phoneNum}
 
                             </div>
-                            
-            
+
+
                         )
                     })
                 }
-{/* DATA IS COMING BACK WRONG */}
-<button onClick={this.toggleShelterForm}>+ New Shelter</button>
-                                {
-                                    this.state.isShelterFormDisplayed
-                                        ? <form onSubmit={this.createShelter}>
-                                            <div>
-                                                <label htmlFor="name">Name</label>
-                                                <input
-                                                    id="name"
-                                                    type="text"
-                                                    name="name"
-                                                    onChange={this.handleChange}
-                                                    value={this.state.newShelter.name}
-                                                />
-                                            </div>
-                                            <div>
-                                                <label htmlFor="address">Address</label>
-                                                <input
-                                                    id="address"
-                                                    type="text"
-                                                    name="address"
-                                                    onChange={this.handleChange}
-                                                    value={this.state.newShelter.address}
-                                                />
-                                            </div>
-                                            <div>
-                                                <label htmlFor="phoneNum">Phone Number:</label>
-                                                <input
-                                                    id="phoneNum"
-                                                    type="number"
-                                                    name="phoneNum"
-                                                    onChange={this.handleChange}
-                                                    value={this.state.newShelter.phoneNum}
-                                                />
-                                            </div>
-                                            <button>Create</button>
-                                        </form>
-                                        : null
-                                }
+
+                <button onClick={this.toggleShelterForm}>+ New Shelter</button>
+                {
+                    this.state.isShelterFormDisplayed
+                        ? <form onSubmit={this.createShelter}>
+                            <div>
+                                <label htmlFor="name">Name</label>
+                                <input
+                                    id="name"
+                                    type="text"
+                                    name="name"
+                                    onChange={this.handleChange}
+                                    value={this.state.newShelter.name}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="address">Address</label>
+                                <input
+                                    id="address"
+                                    type="text"
+                                    name="address"
+                                    onChange={this.handleChange}
+                                    value={this.state.newShelter.address}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="phoneNum">Phone Number:</label>
+                                <input
+                                    id="phoneNum"
+                                    type="number"
+                                    name="phoneNum"
+                                    onChange={this.handleChange}
+                                    value={this.state.newShelter.phoneNum}
+                                />
+                            </div>
+                            <button>Create</button>
+                        </form>
+                        : null
+                }
 
             </div>
         );
