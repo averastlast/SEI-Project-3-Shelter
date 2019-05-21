@@ -1,7 +1,22 @@
+@font-face {
+  font-family: 'aver';
+  src: url('./components/fonts/Aver.ttf');
+}
+
+@font-face {
+  font-family: 'sketch';
+  src: url('./components/fonts/Sketch_Block.ttf');
+}
+
 body {
   background: coral;
 }
 
 title {
-  color: teal;
+  color: #51ACE3;
+  font-family: 'aver';
+}
+
+p {
+  font-family: 'aver'
 }
