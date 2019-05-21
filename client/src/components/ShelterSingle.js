@@ -134,7 +134,7 @@ class ShelterSingle extends Component {
                     return (
                         <div class='dogList' key={i}>
                             <h1><Link to={"/" + this.state.shelterInfo.shelter.name + '/dog/' + dog._id} shelterId={this.state.shelterInfo.shelter._id}>{dog.name}</Link></h1>
-                            <p>{dog.breed}</p>
+                            <p>Breed: {dog.breed}</p>
                         </div>
                     )
                 })
