@@ -17,7 +17,7 @@ body {
   color: #7C8A97;
   font-family: 'sketch';
   font-size: 20vh;
-  margin: 0;
+  margin-bottom: 5%;
 }
 
 .subtitle {
@@ -25,19 +25,20 @@ body {
   font-family: 'sketch';
   font-size: 10vh;
   margin: 0;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 }
 
-.textunit {
-  color: #2E3337;
-  font-family: 'aver';
-  font-size: 3vh;
+.dogname {
+  color: rgb(55, 62, 68);
+  font-family: 'sketch';
+  font-size: 10vh;
+  margin: 2% 0;
 }
+
+
 
 p {
   font-family: 'aver';
+  font-size: 3vh;
   color: #29495D;
   margin: 2vh 0;
   padding: 0;
@@ -85,8 +86,52 @@ form {
   transform: translateY(4px);
 }
 
+/* DELETE BUTTON */
+.deleteButton {
+  font-family: 'aver';
+  color: rgb(24, 50, 66);
+  background-color: rgb(227, 81, 105);
+  box-shadow: 0 4px #999;
+  border-radius: 10%;
+  padding: 1% 2%;
+  font-size: 3vh;
+  margin: 5% 5%;
+}
+
+.deleteButton:hover {background-color: rgb(150, 52, 68)}
+
+.deleteButton:active {
+  background-color: rgb(255, 130, 151);
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+}
+
 /* CONTAINERS */
 .shelterList {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dogList {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.singleShelter {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.singleDog {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.editbox {
   display: flex;
   align-items: center;
   flex-direction: column;

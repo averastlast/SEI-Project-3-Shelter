@@ -55,20 +55,19 @@ class DogSingle extends Component {
         }
 
         return (
-            <div>
-                {this.props.match.params.shelterName}
-                <p>I am a dog</p>
-                <button> EDIT</button>
-                {this.state.dogInfo.name}
-                {this.state.dogInfo.breed}
+            <div class='singleDog'>
+                
+                <p class='dogname'>{this.state.dogInfo.name}</p>
+                <p>Breed: {this.state.dogInfo.breed}</p>
+                <p>Shelter: {this.props.match.params.shelterName}</p>
 
-
-                <button onClick={this.toggleEditForm}>Edit</button>
+                <button class='button' onClick={this.toggleEditForm}>Edit</button>
                 {
                     this.state.isEditFormDisplayed
                         ? <form onSubmit={this.updateDog}>
+                        <div><p class='subtitle'>Edit Dog Form:</p></div>
                             <div>
-                                <label htmlFor="name">Name</label>
+                                <label htmlFor="name">Name: </label>
                                 <input
                                     id="name"
                                     type="text"
@@ -78,7 +77,7 @@ class DogSingle extends Component {
                                 />
                             </div>
                             <div>
-                                <label htmlFor="breed">Breed</label>
+                                <label htmlFor="breed">Breed: </label>
                                 <textarea
                                     id="breed"
                                     type="text"
@@ -87,19 +86,20 @@ class DogSingle extends Component {
                                     value={this.state.dogInfo.breed}
                                 />
                             </div>
-                            <button>Update</button>
+                            <button class='button'>Update</button>
                         </form>
-                        : <div>
-                            <div>
+                        : <div class='editbox'>
+                            <p class='dogname'>Edit this dog:</p>
+                            <p>
                                 Name: {this.state.dogInfo.name}
-                            </div>
-                            <div>
+                            </p>
+                            <p>
                                 Breed: {this.state.dogInfo.breed}
-                            </div>
-                            <button onClick={this.deleteDog}>Delete</button>
+                            </p>
+                            <button class='deleteButton' onClick={this.deleteDog}>Delete</button>
                         </div>
                 }
-
+                <div><Link to="/">Home</Link></div>
             </div>
         )
 

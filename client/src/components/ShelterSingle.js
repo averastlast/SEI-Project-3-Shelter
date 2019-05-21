@@ -126,28 +126,26 @@ class ShelterSingle extends Component {
         }
 
         return (
-            <div>
-
-                <p>I am a shelter</p>
-
-                <p>{this.state.shelterInfo.shelter.name}</p>
+            <div class='singleShelter '>
+                <p class='title'>{this.state.shelterInfo.shelter.name}</p>
+                <p class='subtitle'>Dogs:</p>
                 {this.state.shelterInfo.dogs.map((dog, i) => {
                     return (
-                        <div key={i}>
+                        <div class='dogList' key={i}>
                             <h1><Link to={"/" + this.state.shelterInfo.shelter.name + '/dog/' + dog._id} shelterId={this.state.shelterInfo.shelter._id}>{dog.name}</Link></h1>
-                            {dog.breed}
-
+                            <p>{dog.breed}</p>
                         </div>
                     )
                 })
                 }
 
-                <button onClick={this.toggleEditForm}>Edit</button>
+                <button class='button' onClick={this.toggleEditForm}>Edit</button>
                 {
                     this.state.isEditFormDisplayed
                         ? <form onSubmit={this.updateShelter}>
+                        <p class='dogname'>Edit Shelter Form:</p>
                             <div>
-                                <label htmlFor="name">Name</label>
+                                <label htmlFor="name">Name:</label>
                                 <input
                                     id="name"
                                     type="text"
@@ -157,7 +155,7 @@ class ShelterSingle extends Component {
                                 />
                             </div>
                             <div>
-                                <label htmlFor="address">Address</label>
+                                <label htmlFor="address">Address:</label>
                                 <textarea
                                     id="address"
                                     type="text"
@@ -167,7 +165,7 @@ class ShelterSingle extends Component {
                                 />
                             </div>
                             <div>
-                                <label htmlFor="phoneNum">Phone Number</label>
+                                <label htmlFor="phoneNum">Phone Number:</label>
                                 <textarea
                                     id="phoneNum"
                                     type="number"
@@ -176,29 +174,31 @@ class ShelterSingle extends Component {
                                     value={this.state.shelterInfo.shelter.phoneNum}
                                 />
                             </div>
-                            <button>Update</button>
+                            <button class='button'>Update</button>
                         </form>
-                        : <div>
-                            <div>
+                        : <div class='editbox'>
+                            <p class='dogname'>Edit this shelter:</p>
+                            <p>
                                 Name: {this.state.shelterInfo.shelter.name}
-                            </div>
-                            <div>
+                            </p>
+                            <p>
                                 Address: {this.state.shelterInfo.shelter.address}
-                            </div>
-                            <div>
+                            </p>
+                            <p>
                                 Phone Number: {this.state.shelterInfo.shelter.phoneNum}
-                            </div>
-                            <button onClick={this.deleteShelter}>Delete</button>
+                            </p>
+                            <button class='deleteButton' onClick={this.deleteShelter}>Delete</button>
                         </div>
                 }
 
-                {/* CHANGE BEGIN */}
-                <button onClick={this.toggleAddDogForm}>+ New Dog</button>
+                
+                <button class='button' onClick={this.toggleAddDogForm}>Add New Dog</button>
                 {
                     this.state.isAddDogFormDisplayed
                         ? <form onSubmit={this.createDog}>
+                        <p class='dogname'>Add New Dog Form:</p>
                             <div>
-                                <label htmlFor="name">Name</label>
+                                <label htmlFor="name">Name: </label>
                                 <input
                                     id="name"
                                     type="text"
@@ -208,7 +208,7 @@ class ShelterSingle extends Component {
                                 />
                             </div>
                             <div>
-                                <label htmlFor="breed">Breed</label>
+                                <label htmlFor="breed">Breed:</label>
                                 <input
                                     id="breed"
                                     type="text"
@@ -217,11 +217,11 @@ class ShelterSingle extends Component {
                                     value={this.state.newDog.breed}
                                 />
                             </div>
-                            <button>Create</button>
+                            <button class='button'>Create</button>
                         </form>
                         : null
                 }
-                {/* CHANGE END */}
+                <Link to="/">Home</Link>
             </div>
         )
 
