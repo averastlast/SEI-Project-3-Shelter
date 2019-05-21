@@ -61,14 +61,15 @@ class ShelterList extends Component {
     render() {
 
         return (
-            <div>
-                <title>Shelters:</title>
+            <div class='shelterList'>
+                <p class='title'>Dog Shelters:</p>
+                
                 {
                     this.state.allShelters.map((shelter, i) => {
                         return (
 
                             <div key={i}>
-                                <h1><Link to={'/shelter/' + shelter._id}>{shelter.name}</Link></h1>
+                                <p class='subtitle'><Link to={'/shelter/' + shelter._id}>{shelter.name}</Link></p>
                                 {shelter.address}
                                 {shelter.phoneNum}
 
@@ -79,7 +80,7 @@ class ShelterList extends Component {
                     })
                 }
 
-                <button onClick={this.toggleShelterForm}>+ New Shelter</button>
+                <button class='button' onClick={this.toggleShelterForm}>Add new shelter</button>
                 {
                     this.state.isShelterFormDisplayed
                         ? <form onSubmit={this.createShelter}>
