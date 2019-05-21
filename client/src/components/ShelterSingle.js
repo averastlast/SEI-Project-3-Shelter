@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect, Link } from 'react-router-dom';
 import axios from "axios";
+import Dogpic from './img/dog.png'
 
 class ShelterSingle extends Component {
     state = {
@@ -191,7 +192,7 @@ class ShelterSingle extends Component {
                         </div>
                 }
 
-                
+                <div><img src={Dogpic}/></div>
                 <button class='button' onClick={this.toggleAddDogForm}>Add New Dog</button>
                 {
                     this.state.isAddDogFormDisplayed
