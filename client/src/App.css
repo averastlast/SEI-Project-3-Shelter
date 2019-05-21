@@ -21,21 +21,48 @@ body {
 }
 
 .subtitle {
-  color: #7C8A97;
+  color: rgb(55, 62, 68);
   font-family: 'sketch';
-  font-size: 5vh;
-  margin: 5vh 0;
+  font-size: 10vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.textunit {
+  color: #2E3337;
+  font-family: 'aver';
+  font-size: 3vh;
 }
 
 p {
   font-family: 'aver';
   color: #29495D;
+  margin: 2vh 0;
+  padding: 0;
 }
 
 a {
   font-family: 'aver';
   text-decoration: none;
   color: #29495D;
+  font-size: 5vh;
+}
+
+a:hover {
+  color: rgb(101, 178, 226);
+}
+
+form {
+  font-family: 'aver';
+  font-size: 3vh;
+  color: #29495D;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* BUTTONS */

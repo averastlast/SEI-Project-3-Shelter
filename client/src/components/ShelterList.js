@@ -68,14 +68,11 @@ class ShelterList extends Component {
                     this.state.allShelters.map((shelter, i) => {
                         return (
 
-                            <div key={i}>
-                                <p class='subtitle'><Link to={'/shelter/' + shelter._id}>{shelter.name}</Link></p>
-                                {shelter.address}
-                                {shelter.phoneNum}
-
+                            <div class='textunit' key={i}>
+                                <p><Link to={'/shelter/' + shelter._id}>{shelter.name}</Link></p>
+                                <p>{shelter.address}</p>
+                                <p>{shelter.phoneNum}</p>
                             </div>
-
-
                         )
                     })
                 }
@@ -84,8 +81,9 @@ class ShelterList extends Component {
                 {
                     this.state.isShelterFormDisplayed
                         ? <form onSubmit={this.createShelter}>
+                            <div><p class='subtitle'>New Shelter Form:</p></div>
                             <div>
-                                <label htmlFor="name">Name</label>
+                                <label htmlFor="name">Name:</label>
                                 <input
                                     id="name"
                                     type="text"
@@ -95,7 +93,7 @@ class ShelterList extends Component {
                                 />
                             </div>
                             <div>
-                                <label htmlFor="address">Address</label>
+                                <label htmlFor="address">Address:</label>
                                 <input
                                     id="address"
                                     type="text"
@@ -114,7 +112,7 @@ class ShelterList extends Component {
                                     value={this.state.newShelter.phoneNum}
                                 />
                             </div>
-                            <button>Create</button>
+                            <button class='button'>Create</button>
                         </form>
                         : null
                 }
