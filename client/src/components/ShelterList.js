@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import iconPic from './img/icon.png'
 
 class ShelterList extends Component {
     state = {
@@ -63,6 +63,7 @@ class ShelterList extends Component {
         return (
             <div class='shelterList'>
                 <p class='title'>Dog Shelters:</p>
+                <div><img class='icon' src={iconPic}/></div>
                 
                 {
                     this.state.allShelters.map((shelter, i) => {
@@ -116,6 +117,7 @@ class ShelterList extends Component {
                         </form>
                         : null
                 }
+                <div><p class='subtitle'>Adoption Advice:</p></div>
                 <div>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5BAebbfaStc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

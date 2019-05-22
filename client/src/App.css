@@ -12,12 +12,15 @@ body {
   background: #E1E5D8;
 }
 
+.icon{
+  height: 15vh;
+}
+
 /* FONTS */
 .title {
   color: #7C8A97;
   font-family: 'sketch';
   font-size: 20vh;
-  margin-bottom: 5%;
 }
 
 .subtitle {
