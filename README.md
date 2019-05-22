@@ -5,6 +5,8 @@ For project #3, I created a website with a remote database where users can perfo
 
 Dogs are nested with their shelter with an Object id. This made the resulting data more difficult to work with than anticipated, but not impossible. This is mostly the MVP version of the website, but I was able to add decent styling. Additions I wanted to have include having image upload for shelters and dogs, adding cats, and more descriptor fields for each object.
 
+I also set my file system up incorrectly and had to reset my git repo midway through the project. This resulted in the loss of 14 commits. So while there is less than 30 commits, please add 14 to the commit number to have the true number of git commits.
+
 
 **Live Site:** <https://sei-proj-3-shelter.herokuapp.com/>
 
