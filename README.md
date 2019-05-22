@@ -23,8 +23,8 @@ I also set my file system up incorrectly and had to reset my git repo midway thr
 
 ## Prework
 
-![Prework]()
-
+![Prework](client/src/components/img/prework/IMG_20190521_233425950.jpg)
+![Prework](client/src/components/img/prework/IMG_20190521_233442376.jpg)
 
 ## Future Development
 
